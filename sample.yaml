@@ -1,0 +1,13 @@
+port: 8880 
+
+services:
+  service-one:
+    upstream_path: "https://domain/service-one:8881" 
+
+  service-two:
+    upstream_path: "https://domain/service-two:8882"
+
+cors:
+  allow_origins: "*"
+  allow_methods: "*"
+  allow_headers: "Accept, Content-Type, Content-Length, Accept-Encoding, Authorization"
