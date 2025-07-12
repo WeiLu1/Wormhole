@@ -1,7 +1,7 @@
 port: 8880 
 
 services:
-  service-one:
+  service-one:  # name that needs to match the name of your service.
     upstream_path: "https://domain/service-one:8881" 
 
   service-two:
@@ -11,3 +11,10 @@ cors:
   allow_origins: "*"
   allow_methods: "*"
   allow_headers: "Accept, Content-Type, Content-Length, Accept-Encoding, Authorization"
+
+
+rate_limiting:
+  max_capacity: 1
+  per_ip_address:
+    enabled: true
+    cleanup_interval_seconds: 10

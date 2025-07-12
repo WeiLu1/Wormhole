@@ -8,7 +8,6 @@ import (
 )
 
 type Service struct {
-	Name         string `yaml:"name"`
 	UpstreamPath string `yaml:"upstream_path"`
 }
 
@@ -18,10 +17,21 @@ type Cors struct {
 	AllowHeaders string `yaml:"allow_headers"`
 }
 
+type PerIpAddress struct {
+	Enabled                bool `yaml:"enabled"`
+	CleanupIntervalSeconds int  `yaml:"cleanup_interval_seconds"`
+}
+
+type RateLimiting struct {
+	MaxCapacity  int64        `yaml:"max_capacity"`
+	PerIpAddress PerIpAddress `yaml:"per_ip_address"`
+}
+
 type Config struct {
-	Port     string             `yaml:"port"`
-	Services map[string]Service `yaml:"services"`
-	Cors     Cors               `yaml:"cors"`
+	Port         string             `yaml:"port"`
+	Services     map[string]Service `yaml:"services"`
+	Cors         Cors               `yaml:"cors"`
+	RateLimiting RateLimiting       `yaml:"rate_limiting"`
 }
 
 func GetConfig(configurationFilePath string) *Config {
