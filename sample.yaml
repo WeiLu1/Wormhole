@@ -12,9 +12,11 @@ cors:
   allow_methods: "*"
   allow_headers: "Accept, Content-Type, Content-Length, Accept-Encoding, Authorization"
 
-
 rate_limiting:
   max_capacity: 1
   per_ip_address:
     enabled: true
     cleanup_interval_seconds: 10
+
+auth:
+  use_jwt: true

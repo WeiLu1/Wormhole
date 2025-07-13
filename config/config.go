@@ -27,11 +27,16 @@ type RateLimiting struct {
 	PerIpAddress PerIpAddress `yaml:"per_ip_address"`
 }
 
+type Auth struct {
+	UseJwt bool `yaml:"use_jwt"`
+}
+
 type Config struct {
 	Port         string             `yaml:"port"`
 	Services     map[string]Service `yaml:"services"`
 	Cors         Cors               `yaml:"cors"`
 	RateLimiting RateLimiting       `yaml:"rate_limiting"`
+	Auth         Auth               `yaml:"auth"`
 }
 
 func GetConfig(configurationFilePath string) *Config {

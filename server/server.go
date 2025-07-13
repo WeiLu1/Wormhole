@@ -3,10 +3,12 @@ package server
 import (
 	"log"
 	"net/http"
+	"os"
 
 	"github.com/WeiLu1/wormhole/config"
 	mw "github.com/WeiLu1/wormhole/middleware"
 	"github.com/WeiLu1/wormhole/proxy"
+	"github.com/WeiLu1/wormhole/utils"
 )
 
 type Server struct {
@@ -38,6 +40,11 @@ func (s *Server) Run() error {
 	} else {
 		log.Print("Running with global rate limit")
 		handler = mw.WithRateLimitingGlobal(handler, rateLimitConfig, rateLimiter)
+	}
+
+	if s.Config.Auth.UseJwt {
+		jwtProcessor := utils.NewJWTProcessor(os.Getenv("JWT_SECRET"))
+		handler = mw.WithAuth(handler, jwtProcessor)
 	}
 
 	handler = mw.WithLogging(handler)

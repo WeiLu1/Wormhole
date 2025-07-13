@@ -18,5 +18,6 @@ Wormhole will match destination of the request by name and proxy to the provided
 
 ### Future work
 - Documentation and set up examples
-- Request authentication
 - Retry plugin
+- Load Balancing
+- IP whitelisting
