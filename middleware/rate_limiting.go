@@ -137,6 +137,6 @@ func serve(rateLimiter *RateLimiter, ip string, c config.RateLimiting, w http.Re
 }
 
 func rateLimitExceededResponse(w http.ResponseWriter) {
-	log.Printf("Too many requests for rate limiting capacity")
+	log.Print("Too many requests for rate limiting capacity")
 	http.Error(w, "Too Many Requests", http.StatusTooManyRequests)
 }
