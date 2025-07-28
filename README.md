@@ -15,9 +15,17 @@ service-one:
 Wormhole will match destination of the request by name and proxy to the provided upstream path.
 
 
+## Features
 
-### Future work
-- Documentation and set up examples
+### CORS
+
+### Rate Limiting
+
+### Authentication
+
+### IP Whitelisting
+
+
+## Future work
 - Retry plugin
-- Load Balancing
-- IP whitelisting
+- Documentation and set up examples
