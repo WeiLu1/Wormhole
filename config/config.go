@@ -31,12 +31,17 @@ type Auth struct {
 	UseJwt bool `yaml:"use_jwt"`
 }
 
+type Whitelist struct {
+	Allow []string `yaml:"allow"`
+}
+
 type Config struct {
 	Port         string             `yaml:"port"`
 	Services     map[string]Service `yaml:"services"`
 	Cors         Cors               `yaml:"cors"`
 	RateLimiting RateLimiting       `yaml:"rate_limiting"`
 	Auth         Auth               `yaml:"auth"`
+	Whitelist    Whitelist          `yaml:"whitelist"`
 }
 
 func GetConfig(configurationFilePath string) *Config {

@@ -47,6 +47,10 @@ func (s *Server) Run() error {
 		handler = mw.WithAuth(handler, jwtProcessor)
 	}
 
+	if allowAddrs := s.Config.Whitelist.Allow; allowAddrs != nil {
+		handler = mw.WithWhitelisting(handler, allowAddrs)
+	}
+
 	handler = mw.WithLogging(handler)
 
 	mux.HandleFunc("/*", handler)
